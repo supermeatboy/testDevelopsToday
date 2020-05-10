@@ -1,16 +1,30 @@
-import React from 'react'
-import Link from 'next/link'
-import Layout from '../../components/Layout'
+import React, {/*useState*/} from 'react';
+import Layout from '../../components/Layout';
+//import { ITodo } from '../../interfaces'
+import Form from "../../components/Form";
 
-const NewPostPage: React.FC = () => (
-    <Layout title="NewPostPage">
-        <h1>NewPostPage</h1>
-        <p>
-            <Link href="/">
-                <a>Go home</a>
-            </Link>
-        </p>
+
+const CreatePost: React.FC = () => {
+    //const [todos, setTodos] = useState<ITodo[]>([])
+
+    const addHandler = (data:any) => {
+        // const newTodo: ITodo = {
+        //     title: title,
+        //     id: Date.now(),
+        //     completed: false
+        // }
+        // //setTodos([newTodo, ...todos])
+        // setTodos(prev => [newTodo, ...prev])
+        console.log(data)
+    }
+
+
+    return (<Layout title="Create Post">
+        <div className="container">
+            <h1>Create Post</h1>
+            <Form onAdd={addHandler}/>
+        </div>
     </Layout>
-)
+)};
 
-export default NewPostPage
+export default CreatePost;

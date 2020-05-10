@@ -4,7 +4,19 @@
 //
 // import User from 'path/to/interfaces';
 
-export type User = {
+export type Post = {
   id: number
-  name: string
+  title: string
+  body: string
+  comments?: Comment[]
+}
+export type Comment = {
+  id: number
+  postId: number
+  body: string
+}
+export type ITodo = {
+  title: string
+  id: number
+  completed: boolean
 }

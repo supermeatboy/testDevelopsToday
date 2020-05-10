@@ -1,19 +1,19 @@
 import * as React from 'react';
 import ListItem from './ListItem';
-import { User } from '../interfaces';
+import { Post } from '../interfaces';
 
 type Props = {
-    items: User[];
+    items: Post[];
 };
 
 const List: React.FunctionComponent<Props> = ({ items }) => (
-    <ul>
+    <div className="row">
         {items.map((item) => (
-            <li key={item.id}>
+            <div className="col s12 m4 l4" key={item.id}>
                 <ListItem data={item} />
-            </li>
+            </div>
         ))}
-    </ul>
+    </div>
 );
 
 export default List;
