@@ -1,10 +1,10 @@
-// @ts-ignore
 import Link from 'next/link'
 import Layout from '../components/Layout'
-// @ts-ignore
 import styled from 'styled-components'
 
-const Button = styled.button``
+const Button = styled.div`
+    //border: 10px solid red;
+`
 
 const IndexPage = () => (
     <Layout title="Home">
@@ -22,22 +22,7 @@ const IndexPage = () => (
                                 I am convenient because I require little markup to use effectively.</p>
                         </div>
                         <Button className="card-action">
-                            <Link href="#">This is a link</Link>
-                        </Button>
-                    </div>
-                </div>
-                <div className="col s12 m4 l4">
-                    <div className="card">
-                        <div className="card-image">
-                            <img src="https://materializecss.com/images/sample-1.jpg"/>
-                            <span className="card-title">Card Title</span>
-                        </div>
-                        <div className="card-content">
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                                I am convenient because I require little markup to use effectively.</p>
-                        </div>
-                        <Button className="card-action">
-                            <Link href="#">This is a link</Link>
+                            <Link href="#"><a>This is a link</a></Link>
                         </Button>
                     </div>
                 </div>
