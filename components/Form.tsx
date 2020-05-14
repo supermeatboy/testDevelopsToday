@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Textarea } from '../pages/posts/style';
+import { Input, Textarea } from '../pages/style';
 import { useForm } from 'react-hook-form';
 
 interface FormProps {
@@ -7,7 +7,7 @@ interface FormProps {
 }
 type Inputs = {
     title: string;
-    description: string;
+    body: string;
 };
 
 const Form: React.FC<FormProps> = ({onAdd}) => {
@@ -31,12 +31,12 @@ const Form: React.FC<FormProps> = ({onAdd}) => {
                 <div className="row">
                     <div className="input-field">
                         <Textarea
-                            name="description"
+                            name="body"
                             id="textarea1"
                             ref={register({ required: true })}
                             className="materialize-textarea" />
                         <label htmlFor="textarea1">Type here post description</label>
-                        {errors.description && <span>This field is required</span>}
+                        {errors.body && <span>This field is required</span>}
                     </div>
                 </div>
                 <div className="row right-align">

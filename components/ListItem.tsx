@@ -4,20 +4,50 @@ import Link from 'next/link';
 import { Post } from '../interfaces';
 import styled from 'styled-components';
 
-type Props = {
-    data: Post;
-};
-
-const Button = styled.div`
-    color: red;
+const Button = styled.button`
+    display: block;
+    padding: 0 10px;
+`;
+const ButtonGroup = styled.div`
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 5px 0 0 0;
+    background-color: transparent;
+    opacity: 0;
+    & > *{
+        margin: 0 5px 0 0;
+    }
 `;
 const Preview = styled.a`
     display: block;
     cursor: pointer;
 `;
+const Card = styled.div`
+    &:hover{
+        .button-group{
+            opacity: 1;
+        }
+    }
+`;
 
-const ListItem: React.FunctionComponent<Props> = ({ data }) => (
-    <div className="card">
+type Props = {
+    data: Post;
+    onEditPost(id:string):void
+    onDeletePost(id:string):void
+};
+
+const ListItem: React.FunctionComponent<Props> = ({ data, onEditPost, onDeletePost }) => (
+    <Card className="card">
+        <ButtonGroup className='button-group'>
+            <Button className="btn waves-effect waves-light" onClick={() => onEditPost(data.id.toString())}>
+                <i className="material-icons">edit</i>
+            </Button>
+            <Button className="btn waves-effect waves-light" onClick={() => onDeletePost(data.id.toString())}>
+                <i className="material-icons">delete</i>
+            </Button>
+        </ButtonGroup>
         <Link href="/posts/[id]" as={`/posts/${data.id}`}>
             <Preview className="card-image">
                 <img src="https://materializecss.com/images/sample-1.jpg" alt="" />
@@ -27,12 +57,12 @@ const ListItem: React.FunctionComponent<Props> = ({ data }) => (
         <div className="card-content">
             <p>{data.body}</p>
         </div>
-        <Button className="card-action">
-            <Link href="/posts/[id]" as={`/posts/${data.id}`}>
+        <div className="card-action text-center">
+            <Link href="/posts/[id]?edit" as={`/posts/${data.id}`}>
                 <a>This is a link</a>
             </Link>
-        </Button>
-    </div>
+        </div>
+    </Card>
 );
 
 export default ListItem;

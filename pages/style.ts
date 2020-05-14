@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+export const Posts = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    & > *{
+        margin: 0!important;
+    }
+`;
 export const Input = styled.input`
     &:focus + label,
     &:valid + label {

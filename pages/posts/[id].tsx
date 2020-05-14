@@ -10,7 +10,7 @@ type Props = {
     errors?: string;
 };
 
-export const StaticPropsDetail = (props: Props) =>{
+const StaticPropsDetail = (props: Props) => {
     const { item, errors } = props;
 
     if (errors) {
@@ -28,16 +28,16 @@ export const StaticPropsDetail = (props: Props) =>{
             <div className="container">{item && <ListDetail item={item} />}</div>
         </Layout>
     );
-}
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
     // Get the paths we want to pre-render based on users
     //const paths = [{ params: { id: ['id'] } }];
     const res = await axios.get(`https://simple-blog-api.crew.red/posts`);
     const posts: Post[] = await res.data;
-    const paths = posts.map(post => ({
+    const paths = posts.map((post) => ({
         params: { id: post.id.toString() },
-    }))
+    }));
     // We'll pre-render only these paths at build time.
     // { fallback: false } means other routes should 404.
     return { paths, fallback: false };
@@ -59,3 +59,4 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         return { props: { errors: err.message } };
     }
 };
+export default StaticPropsDetail;
